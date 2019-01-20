@@ -1,0 +1,126 @@
+.container{
+    height: 100vh;
+    width: 100vw;
+}
+
+.top {
+    min-height: 100px;
+    height: auto;
+    width: 100%;
+}
+
+.bottom{
+    width: 100%;
+    height: calc(100% - 100px);
+}
+
+.overlay {
+    position: fixed; /* Sit on top of the page content */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+  }
+
+.elementREcent:hover{
+    background-color: lightgray;
+    cursor: pointer;
+    line-height: 33px;
+    height: 33px;;
+}
+
+.elementREcent{
+    height: 24px;;
+}
+
+.recent{
+    width: 200px;
+    margin: auto;
+}
+
+img{
+    height: 40px;
+    width: 40px;
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 256px;
+    height: 40px;
+    position: relative;
+  }
+
+  input{
+      border: none;
+    border-bottom: 1px solid black !important;
+    height: 37px;
+    width: 227px;
+    position: absolute;
+    outline: none;
+    padding: 0 5px;
+    font-size: 16px;
+    // font-weight: bold;
+  }
+
+button{
+    width: 75px;
+    height: 36px;
+    border: none;
+    background-color: darkcyan;
+    border-right: 16px;
+    border: 1px solid gainsboro;
+    font-size: 13px;
+    border-radius: 2px !important;
+    font-weight: bold;
+    color: antiquewhite
+}
+
+mat-autocomplete{
+    position: absolute;
+}
+
+mat-option{
+    height:30px;
+}
+
+li{
+    list-style: none;
+    line-height: 30px;
+    margin-block-start:0px !important;
+    padding-inline-start: 1em;
+    width: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+li:hover{
+    background-color: lightgray;
+}
+
+ul{
+    padding-inline-start:0px !important;
+    width:239px;
+    position: absolute;
+    background-color: beige;
+    top: 40px;
+}
+// :ng-host >>> .cdk-overlay-pane{
+//     margin: auto !important;
+// }
+
+.heading{
+    padding:10px;
+    font-weight:bold;
+    font-size:16px;
+    color: gray;
+}

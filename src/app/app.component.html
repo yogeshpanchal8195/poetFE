@@ -1,21 +1,62 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<!-- <router-outlet></router-outlet> -->
 
-<router-outlet></router-outlet>
+<div fxLayout="column" class="container" (click)="hideList()">
+  <form class="example-form" fxLayout="row" class="top" fxLayoutAlign="center center">
+    <!-- <input type="text" id="inputField" [(ngModel)]="inputData" (keypress)="keyUp()"> -->
+
+    <div class="example-full-width" fxLayout="column" fxLayoutAlign="center center">
+      <input type="text" name="inputField" [formControl]="inputData" (keyup)="keyUp($event)" placeholder="Search the word" autocomplete="off">
+      <ul fxLayoutAlign="start start" fxLayout="column" *ngIf="showList">
+        <li *ngFor="let option of suggestionsArray " [value]="option" (click)="updateValue(option)">
+          {{option}}
+        </li>
+      </ul>
+    </div>
+
+    <!-- <div fxLayout="column" >
+      <input type="text" placeholder="Pick one" aria-label="Number" [formControl]="inputData" (keyup)="keyUp($event)">
+      <ng-scrollbar>
+
+        <ul>
+          
+          <li class="item" *ngFor="let option of suggestionsArray" (click)="selectItem(item)">
+            {{option}}
+          </li>
+        </ul>
+      </ng-scrollbar>
+
+    </div> -->
+
+
+
+    <button type="submit" (click)="clickFn()">GO</button>
+  </form>
+
+  <div style="text-align:center">
+    <div fxLayout="column" class="bottom" fxLayoutAlign="start center" >
+      <div *ngIf="outputArray && outputArray.length != 0 ">
+        <p class="heading">Top {{outputArray.length}} Searched word</p>
+        <div *ngFor="let data of outputArray" fxLayout="row" fxLayoutAlign="center center">
+          <p>
+            {{data.word}}
+          </p>
+        </div>
+      </div>
+      <div *ngIf="outputArray && outputArray.length == 0" fxLayoutAlign="center center" class="heading">No
+        Result Found</div>
+    </div>
+
+    <div *ngIf="recentlyUsedWords && recentlyUsedWords.length && showRecent" class="recent">
+      <div class="heading">Recently Used Words</div>
+      <div *ngFor="let ele of recentlyUsedWords" (click)="recentClick(ele.name)">
+        <div *ngIf="ele.name" class="elementREcent">
+          {{ele.name}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="overlay" *ngIf="showLoader" fxLayoutAlign="center center">
+  <img src="assets/Spinner-1s-200px.svg">
+</div>
